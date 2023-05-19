@@ -22,7 +22,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 // Install dependencies
-                sh 'sudo apt npm install -y'
+                sh 'npm install'
                 
                 // Run tests with Jest
                 sh 'npm test'
