@@ -30,9 +30,6 @@ pipeline {
         stage('Build and Push To Nexus Image') {
             steps {
                     script {
-                        // Install Node.js and NPM
-                        def nodeTool = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-                        env.PATH = "${nodeTool}/bin:${env.PATH}"
 
                         // Install dependencies and build the React application
                         sh 'npm install'
