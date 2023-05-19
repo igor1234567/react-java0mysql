@@ -35,7 +35,7 @@ pipeline {
                         sh '''cp /home/vagrant/jenkins_slave/workspace/module-6/frontend/package.json /home/vagrant/jenkins_slave/workspace/module-6/package.json'''
                         sh '''npm install'''
                         sh '''npm run build'''
-
+                         sh '''pwd'''
                         // Build the Docker image
                         sh 'docker build . -t igorripin/react-java0mysql:${BUILD_ID}'
                 }
