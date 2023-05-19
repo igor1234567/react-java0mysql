@@ -38,15 +38,16 @@ pipeline {
                         sh '''cp /home/vagrant/jenkins_slave/workspace/module-6/frontend/public/index.html /home/vagrant/jenkins_slave/workspace/module-6/public/index.html'''
                         sh '''npm install'''
                         sh '''pwd'''
-                        sh '''npm run build'''
                         // Build the Docker image
-                        sh 'docker build . -t igorripin/react-java0mysql:${BUILD_ID}'
+                        // sh 'docker build . -t ec2-35-158-255-27.eu-central-1.compute.amazonaws.com/react-java0mysql:${BUILD_ID}'
                 }
                     withCredentials([usernamePassword(credentialsId: 'nexus_user', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
                         
-                        sh '''docker tag igorripin/react-java0mysql:${BUILD_ID} ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
+                        sh '''docker tag mysql:latest ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
+                        sh '''docker tag module-6_frontend ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
                         sh '''docker login ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083 -u $nexus_user -p $nexus_pass'''
                         sh '''docker push ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
+                        sh '''docker push ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
                  }
             }
         }
