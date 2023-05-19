@@ -29,7 +29,20 @@ pipeline {
 
         stage('Build and Push To Nexus Image') {
             steps {
+                    script {
+                        // Install Node.js and NPM
+                        def nodeTool = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                        env.PATH = "${nodeTool}/bin:${env.PATH}"
+
+                        // Install dependencies and build the React application
+                        sh 'npm install'
+                        sh 'npm run build'
+
+                        // Build the Docker image
+                        sh 'docker build . -t igorripin/react-java0mysql:${BUILD_ID}'
+                }
                     withCredentials([usernamePassword(credentialsId: 'nexus_user', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
+                        
                         sh '''docker tag igorripin/react-java0mysql:${BUILD_ID} ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
                         sh '''docker login ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083 -u $nexus_user -p $nexus_pass'''
                         sh '''docker push ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
