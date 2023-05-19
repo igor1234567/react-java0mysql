@@ -32,8 +32,9 @@ pipeline {
                     script {
 
                         // Install dependencies and build the React application
-                        sh 'npm install'
-                        sh 'npm run build'
+                        sh '''cp /home/vagrant/jenkins_slave/workspace/module-6/frontend/package.json /home/vagrant/jenkins_slave/workspace/module-6/package.json'''
+                        sh '''npm install'''
+                        sh '''npm run build'''
 
                         // Build the Docker image
                         sh 'docker build . -t igorripin/react-java0mysql:${BUILD_ID}'
