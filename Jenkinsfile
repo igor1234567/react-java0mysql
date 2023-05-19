@@ -34,7 +34,7 @@ pipeline {
                         // Install dependencies and build the React application
                         sh '''cp /home/vagrant/jenkins_slave/workspace/module-6/frontend/package.json /home/vagrant/jenkins_slave/workspace/module-6/package.json'''
                         sh '''pwd'''
-                        sh '''mkdir public'''
+                        // sh '''mkdir public'''
                         sh '''cp /home/vagrant/jenkins_slave/workspace/module-6/frontend/public/index.html /home/vagrant/jenkins_slave/workspace/module-6/public/index.html'''
                         sh '''npm install'''
                         sh '''pwd'''
