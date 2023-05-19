@@ -1,8 +1,8 @@
 FROM node:lts AS development
 
 WORKDIR /code
-COPY package.json /code/package.json
-COPY package-lock.json /code/package-lock.json
+COPY frontend/package.json /code/package.json
+COPY frontend/package-lock.json /code/package-lock.json
 
 RUN npm ci
 
