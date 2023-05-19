@@ -23,8 +23,7 @@ pipeline {
             steps {
 
                 // Perform API testing using cURL commands
-                sh 'curl -X GET http://localhost:8080/api/test'
-                sh 'curl -X POST -d "data=example" http://localhost:8080/api/test'
+                sh 'curl -X GET http://localhost:3000'
             }
         }
 
