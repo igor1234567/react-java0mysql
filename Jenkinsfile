@@ -21,11 +21,6 @@ pipeline {
 
         stage('Run tests') {
             steps {
-                // Install dependencies
-                sh 'npm install'
-                
-                // Run tests with Jest
-                sh 'npm test'
 
                 // Run custom test script
                 sh 'bash run_tests.sh'
