@@ -4,7 +4,7 @@ services:
     build:
       context: backend/
       dockerfile: Dockerfile
-      target: prepare-production
+      #target: prepare-production
     ports:
       - 8080:8080
   frontend:
