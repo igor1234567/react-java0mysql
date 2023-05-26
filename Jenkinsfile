@@ -15,7 +15,7 @@ pipeline {
             steps {
                 // Build and deploy the Docker Compose file
                 sh 'docker-compose build'
-                sh 'docker-compose up -d'
+                //sh 'docker-compose up -d'
             }
         }
 
