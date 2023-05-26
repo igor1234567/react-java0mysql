@@ -1,19 +1,35 @@
-version: "3"
+version: '3'
 services:
-  backend:
-    build:
-      context: backend/
-      dockerfile: Dockerfile
-      #target: prepare-production
-    ports:
-      - 8080:8080
   frontend:
-    build:
-      context: frontend/
-      dockerfile: Dockerfile
+    build: ./frontend
     ports:
       - 3000:3000
-  db:
-    image: mysql:latest
+    networks:
+      - mynetwork
+
+  backend:
+    build: ./backend
+    ports:
+      - 8080:8080
     environment:
-      MYSQL_ROOT_PASSWORD: db-57xsl
+      - MYSQL_HOST=db
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+  db:
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=db-57xsl
+      - MYSQL_DATABASE=example
+    volumes:
+      - ./db-data:/var/lib/mysql
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
