@@ -46,7 +46,7 @@ pipeline {
                         
                         sh '''docker tag mysql:latest ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
                         sh '''docker tag module-6_frontend ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
-                        sh '''docker tag module-6_backend ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
+                        sh '''docker tag module-6_backend ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_backend:${BUILD_ID}'''
                         sh '''docker login ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083 -u $nexus_user -p $nexus_pass'''
                         sh '''docker push ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
                         sh '''docker push ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
