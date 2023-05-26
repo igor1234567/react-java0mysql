@@ -51,13 +51,13 @@ pipeline {
                         sh '''docker push ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
                  }
             }
-        }*/
+        }
 
         stage('Cleanup') {
             steps {
                 // Stop and remove the containers
                 //sh 'docker-compose down'
             }
-        }
+        }*/
     }
 }
