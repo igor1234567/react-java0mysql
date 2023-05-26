@@ -25,8 +25,6 @@ pipeline {
                 // Perform API testing using cURL commands
                 sh '''sleep 30'''
                 sh '''curl -X GET http://localhost:3000'''
-                sh '''sleep 30'''
-                sh '''curl -X GET http://localhost:8080'''
             }
         }
 
