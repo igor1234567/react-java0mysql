@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        /*stage('Build and Push To Nexus Image') {
+        stage('Build and Push To Nexus Image') {
             steps {
                     script {
 
@@ -44,11 +44,13 @@ pipeline {
                 }
                     withCredentials([usernamePassword(credentialsId: 'nexus_user', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
                         
-                        sh '''docker tag mysql:latest ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
-                        sh '''docker tag module-6_frontend ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
-                        sh '''docker login ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083 -u $nexus_user -p $nexus_pass'''
-                        sh '''docker push ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
-                        sh '''docker push ec2-35-158-255-27.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
+                        sh '''docker tag mysql:latest ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
+                        sh '''docker tag module-6_frontend ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
+                        sh '''docker tag module-6_backend ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
+                        sh '''docker login ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083 -u $nexus_user -p $nexus_pass'''
+                        sh '''docker push ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql:${BUILD_ID}'''
+                        sh '''docker push ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
+                        sh '''docker push ec2-35-156-177-81.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_backend:${BUILD_ID}'''
                  }
             }
         }
@@ -56,8 +58,8 @@ pipeline {
         stage('Cleanup') {
             steps {
                 // Stop and remove the containers
-                //sh 'docker-compose down'
+                sh 'docker-compose down'
             }
-        }*/
+        }
     }
 }
