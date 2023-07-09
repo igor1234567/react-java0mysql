@@ -44,13 +44,13 @@ pipeline {
                 }
                     withCredentials([usernamePassword(credentialsId: 'nexus_user', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
                         
-                        sh '''docker tag mysql:latest ec2-3-76-194-190.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_mysql:${BUILD_ID}'''
-                        sh '''docker tag module-6_frontend ec2-3-76-194-190.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
-                        sh '''docker tag module-6_backend ec2-3-76-194-190.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_backend:${BUILD_ID}'''
-                        sh '''docker login ec2-3-76-194-190.eu-central-1.compute.amazonaws.com:8083 -u $nexus_user -p $nexus_pass'''
-                        sh '''docker push ec2-3-76-194-190.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_mysql:${BUILD_ID}'''
-                        sh '''docker push ec2-3-76-194-190.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
-                        sh '''docker push ec2-3-76-194-190.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_backend:${BUILD_ID}'''
+                        sh '''docker tag mysql:latest ec2-3-66-198-99.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_mysql:${BUILD_ID}'''
+                        sh '''docker tag module-6_frontend ec2-3-66-198-99.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
+                        sh '''docker tag module-6_backend ec2-3-66-198-99.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_backend:${BUILD_ID}'''
+                        sh '''docker login ec2-3-66-198-99.eu-central-1.compute.amazonaws.com:8083 -u $nexus_user -p $nexus_pass'''
+                        sh '''docker push ec2-3-66-198-99.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_mysql:${BUILD_ID}'''
+                        sh '''docker push ec2-3-66-198-99.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_frontend:${BUILD_ID}'''
+                        sh '''docker push ec2-3-66-198-99.eu-central-1.compute.amazonaws.com:8083/react-java0mysql_module-6_backend:${BUILD_ID}'''
                  }
             }
         }
