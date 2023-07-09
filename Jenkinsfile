@@ -59,6 +59,7 @@ pipeline {
             steps {
                 // Stop and remove the containers
                 //sh 'docker-compose down'
+                sh '''echo "that it"'''
             }
         }
     }
